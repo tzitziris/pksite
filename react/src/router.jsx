@@ -8,25 +8,9 @@ import DefaultLayout from "./components/DefaultLayout.jsx";
 // components/DefaultLayout.jsx
 
 const router = createBrowserRouter([
-    // {
-    //     path: '/home',
-    //     element: <Home />
-    // },
-    // {
-    //     path: '/about',
-    //     element: <About />
-    // },
-    // {
-    //     path: '/news',
-    //     element: <News />
-    // },
-    // {
-    //     path: '*',
-    //     element: <NotFound />
-    // }
     {
-        path: '/',   // Root path for the app
-        element: <DefaultLayout />,  // Use the Layout as the wrapper
+        path: '/',   
+        element: <DefaultLayout />,  
         children: [
           {
             path: 'home',
