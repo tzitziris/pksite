@@ -4,24 +4,48 @@ import News from "./views/News";
 import About from "./views/About";
 import NotFound from "./views/NotFound";
 import React from "react";
+import DefaultLayout from "./components/DefaultLayout.jsx";
+// components/DefaultLayout.jsx
 
 const router = createBrowserRouter([
+    // {
+    //     path: '/home',
+    //     element: <Home />
+    // },
+    // {
+    //     path: '/about',
+    //     element: <About />
+    // },
+    // {
+    //     path: '/news',
+    //     element: <News />
+    // },
+    // {
+    //     path: '*',
+    //     element: <NotFound />
+    // }
     {
-        path: '/home',
-        element: <Home />
-    },
-    {
-        path: '/about',
-        element: <About />
-    },
-    {
-        path: '/news',
-        element: <News />
-    },
-    {
-        path: '*',
-        element: <NotFound />
-    }
+        path: '/',   // Root path for the app
+        element: <DefaultLayout />,  // Use the Layout as the wrapper
+        children: [
+          {
+            path: 'home',
+            element: <Home />,
+          },
+          {
+            path: 'about',
+            element: <About />,
+          },
+          {
+            path: 'news',
+            element: <News />,
+          },
+          {
+            path: '*',
+            element: <NotFound />,
+          },
+        ],
+      },
 ])
 
 export default router;
