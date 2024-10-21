@@ -1,22 +1,29 @@
 .navbar {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-between; /* This keeps the title and nav links separated */
     align-items: center;
-    padding: 10px 20px;
+    padding: 26px 30px;
     background-color: #333;
     color: #fff;
 }
 
-.title {
-    font-size: 24px;
-}
-
+/* Center the nav links */
 .navLinks {
     list-style: none;
     display: flex;
-    gap: 15px;
+    gap: 40px;
+    justify-content: center; /* Center the links */
+    padding: 0; /* Remove default padding */
+    margin: 0; /* Remove default margin */
+    flex-grow: 1; /* Allow this section to take up available space */
+    font-size: 18px;
 }
 
+.title {
+    font-size: 25px;
+}
+
+/* Style for links */
 .link {
     text-decoration: none;
     color: #fff;
