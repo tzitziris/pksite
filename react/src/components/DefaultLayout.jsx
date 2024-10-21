@@ -1,9 +1,7 @@
-// src/components/Layout.jsx
 import React from 'react';
 import Navbar from './Navbar.jsx';
 import Footer from './Footer.jsx';
-import { Outlet } from 'react-router-dom'; // Used to render the current route's component
-// import {useStateContext} from "../context/ContextProvider";
+import { Outlet } from 'react-router-dom'; 
 
 const Layout = () => {
   return (

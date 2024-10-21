@@ -1,0 +1,23 @@
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #333;
+    color: #fff;
+}
+
+.title {
+    font-size: 24px;
+}
+
+.navLinks {
+    list-style: none;
+    display: flex;
+    gap: 15px;
+}
+
+.link {
+    text-decoration: none;
+    color: #fff;
+}
