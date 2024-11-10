@@ -3,16 +3,20 @@ import Navbar from './Navbar.jsx';
 import Footer from './Footer.jsx';
 import { Outlet } from 'react-router-dom'; 
 
-const Layout = () => {
+const DefaultLayout = () => {
   return (
     <div>
       <Navbar />
       <main>
-        <Outlet />  {/* This renders the matched child routes (like Home, About, etc.) */}
-      </main>
+        <Outlet />
+      </main> 
       <Footer />
     </div>
   );
 };
 
-export default Layout;
+export default DefaultLayout;
+
+{/* <main>
+        <Outlet />
+      </main> */}
