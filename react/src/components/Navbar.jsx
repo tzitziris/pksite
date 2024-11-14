@@ -454,7 +454,7 @@ function Navbar(props) {
 
       
       {/* Main content area */}
-      <Box component="main" /*sx={{ p: 3 }}*/>
+      <Box component="main" /*sx={{ p: 1.7 }}*/>
         <Toolbar />
       </Box>
     </Box>

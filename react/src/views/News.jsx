@@ -24,172 +24,193 @@
 
 // export default News;
 // ------------------------
+
+// import React from 'react';
+// import { Container, Box, Typography, Card, CardContent, CardMedia, CardActions, Button, Grid } from '@mui/material';
+
+// const newsItems = [
+//   { title: 'News 1', description: 'Description for news 1', image: 'https://i.ytimg.com/vi/5ZJCDbszAE4/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLDDrGBWuSQE6CJYcg7Vr7GDZH4XSQ' },
+//   { title: 'News 2', description: 'Description for news 2', image: 'https://i.ytimg.com/vi/ZivaNOBf0Io/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLCs2VjFBnwx-F-ek5PxyKO1ggYWTw' },
+//   { title: 'News 3', description: 'Description for news 3', image: 'https://static.independent.co.uk/2024/06/21/20/GettyImages-2153595040.jpg' },
+//   { title: 'News 3', description: 'Description for news 3', image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ9ZUCwX9aEmMWGBIaDoOP75GmnuMWNAFZbFg&s' },
+//   { title: 'News 3', description: 'Description for news 3', image: 'https://phantom-marca.unidadeditorial.es/1216018eca3e5ab745ddaf809e06d76b/resize/828/f/jpg/assets/multimedia/imagenes/2024/09/13/17262108115956.jpg' },
+//   { title: 'News 3', description: 'Description for news 3', image: 'https://via.placeholder.com/150' },
+//   { title: 'News 3', description: 'Description for news 3', image: 'https://via.placeholder.com/150' },
+//   { title: 'News 3', description: 'Description for news 3', image: 'https://via.placeholder.com/150' },
+  
+// ];
+
+// export default function BlogPage() {
+  
+//   return (
+//     <Container maxWidth="lg">
+//   {/* Page Title */}
+//   <Box mt={4} mb={2}>
+//     <Typography variant="h2" sx={{ fontWeight: 'bold' }}>
+//       Blog Page
+//     </Typography>
+//   </Box>
+
+//   {/* News Cards - Grid Layout */}
+//   <Grid container spacing={4}>
+//     {newsItems.map((news, index) => (
+//       <Grid item xs={12} sm={6} md={4} key={index}>
+//         {/* Wrapper Box for the Gray Margin */}
+//         <Box
+//           sx={{
+//             backgroundColor: '#818181',  // Gray background for margin
+//             padding: '8px',               // 2mm space around the card (8px in px)
+//             borderRadius: '8px',          // Optional: Rounded corners for the wrapper
+//             display: 'flex',
+//             justifyContent: 'center',     // Center content inside the wrapper
+//             alignItems: 'center',         // Center vertically as well
+//           }}
+//         >
+//           {/* Card Content with a Different Background Color */}
+//           <Card
+//             sx={{
+//               width: '100%', // Card width set to 100% of the grid item
+//               maxWidth: 345, // You can set a maximum width for the card
+//               height: 370,//400   // Set a fixed height for the card
+//               backgroundColor: '#fff', // Inside background color for the card (white)
+//               boxShadow: 3,            // Initial box-shadow for the card
+//               transition: 'box-shadow 0.3s ease-in-out', // Smooth transition for shadow change
+//               '&:hover': {
+//                 boxShadow: 6,         // Increased shadow on hover
+//                 cursor: 'pointer',    // Change cursor to pointer when hovering over the card
+//               },
+//             }}
+//           >
+//             {/* Image Box with Fixed Dimensions */}
+//             <Box
+//               sx={{
+//                 width: '100%',
+//                 height: 200, // Fixed height for the image
+//                 overflow: 'hidden',
+//               }}
+//             >
+//               <img
+//                 src={news.image}
+//                 alt={news.title}
+//                 style={{
+//                   width: '100%',
+//                   height: '100%',
+//                   objectFit: 'cover',
+//                   objectPosition: 'center',
+//                 }}
+//               />
+//             </Box>
+
+//             {/* Card Content */}
+//             <CardContent sx={{ paddingBottom: '16px' }}>
+//               {/* Title with Hover Effect for Underline */}
+//               <Typography 
+//                 variant="h5" 
+//                 component="div" 
+//                 sx={{
+//                   '&:hover': {
+//                     textDecoration: 'underline',  // Underline on hover
+//                     cursor: 'pointer',            // Change cursor to indicate interactivity
+//                   },
+//                   transition: 'text-decoration 0.3s ease-in-out', // Smooth underline transition
+//                 }}
+//               >
+//                 {news.title}
+//               </Typography>
+//               <Typography variant="body2" color="text.secondary">
+//                 {news.description}
+//               </Typography>
+//             </CardContent>
+//             <CardActions>
+//               <Button size="small">Read More</Button>
+//             </CardActions>
+//           </Card>
+//         </Box>
+//       </Grid>
+//     ))}
+//   </Grid>
+// </Container>
+
+  
+//   );
+// }
+// ----------------------------------------
+
 import React from 'react';
 import { Container, Box, Typography, Card, CardContent, CardMedia, CardActions, Button, Grid } from '@mui/material';
 
 const newsItems = [
-  { title: 'News 1', description: 'Description for news 1', image: 'https://i.ytimg.com/vi/5ZJCDbszAE4/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLDDrGBWuSQE6CJYcg7Vr7GDZH4XSQ' },
-  { title: 'News 2', description: 'Description for news 2', image: 'https://via.placeholder.com/150' },
-  { title: 'News 3', description: 'Description for news 3', image: 'https://via.placeholder.com/150' },
-  { title: 'News 3', description: 'Description for news 3', image: 'https://via.placeholder.com/150' },
-  { title: 'News 3', description: 'Description for news 3', image: 'https://via.placeholder.com/150' },
-  { title: 'News 3', description: 'Description for news 3', image: 'https://via.placeholder.com/150' },
-  { title: 'News 3', description: 'Description for news 3', image: 'https://via.placeholder.com/150' },
-  { title: 'News 3', description: 'Description for news 3', image: 'https://via.placeholder.com/150' },
-  
-  // Add more news items here
+  {
+    title: 'Noteworthy technology acquisitions 2021',
+    description: 'Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.',
+    image: 'https://i.ytimg.com/vi/5ZJCDbszAE4/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLDDrGBWuSQE6CJYcg7Vr7GDZH4XSQ'
+  },
+  {
+    title: 'Noteworthy technology acquisitions 2021',
+    description: 'Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.',
+    image: 'https://i.ytimg.com/vi/ZivaNOBf0Io/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLCs2VjFBnwx-F-ek5PxyKO1ggYWTw'
+  },
+  {
+    title: 'Noteworthy technology acquisitions 2021',
+    description: 'Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.',
+    image: 'https://static.independent.co.uk/2024/06/21/20/GettyImages-2153595040.jpg'
+  },
+  {
+    title: 'Noteworthy technology acquisitions 2021',
+    description: 'Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.',
+    image: 'https://phantom-marca.unidadeditorial.es/1216018eca3e5ab745ddaf809e06d76b/resize/828/f/jpg/assets/multimedia/imagenes/2024/09/13/17262108115956.jpg'
+  },
+  {
+    title: 'Noteworthy technology acquisitions 2021',
+    description: 'Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.',
+    image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ9ZUCwX9aEmMWGBIaDoOP75GmnuMWNAFZbFg&s'
+  },
 ];
 
 export default function BlogPage() {
-  // return (
-  //   <Container maxWidth="lg">
-  //     {/* Page Title */}
-  //     <Box mt={4} mb={2}>
-  //       <Typography variant="h2" sx={{ fontWeight: 'bold' }}>
-  //         Blog Page
-  //       </Typography>
-  //     </Box>
-
-  //     {/* News Cards */}
-  //     <Grid container spacing={4}>
-  //       {newsItems.map((news, index) => (
-  //         <Grid item xs={12} sm={6} md={4} key={index}>
-  //           <Card sx={{ maxWidth: 345 }}>
-  //             <CardMedia
-  //               component="img"
-  //               height="140"
-  //               image={news.image}
-  //               alt={news.title}
-  //             />
-  //             <CardContent>
-  //               <Typography variant="h5" component="div">
-  //                 {news.title}
-  //               </Typography>
-  //               <Typography variant="body2" color="text.secondary">
-  //                 {news.description}
-  //               </Typography>
-  //             </CardContent>
-  //             <CardActions>
-  //               <Button size="small">Read More</Button>
-  //             </CardActions>
-  //           </Card>
-  //         </Grid>
-  //       ))}
-  //     </Grid>
-  //   </Container>
-  // );
   return (
-    <Box 
-      sx={{ 
-        backgroundColor: '#818181', minHeight: '100vh', py: 4 
-      }}
-    >
-    <Container maxWidth="lg">
-      {/* Page Title */}
-      <Box mt={4} mb={2}>
-        <Typography variant="h2" sx={{ fontWeight: 'bold' }}>
-          Blog Page
-        </Typography>
-      </Box>
+    <Box sx={{ bgcolor: '#121212', color: '#e0e0e0', paddingBottom: 5 }}> {/* Very dark background and light text */}
+      <Container maxWidth="lg">
+        
+        {/* Page Title */}
+        <Box mt={0} mb={2} pt={2}>
+          <Typography variant="h2" sx={{ fontWeight: 'bold', color: '#b0bec5' }}> {/* Subtle blue-gray for title */}
+            News
+          </Typography>
+        </Box>
 
-      {/* News Cards */}
-      <Grid container spacing={4}>
-        {newsItems.map((news, index) => (
-          <Grid item xs={12} key={index}>
-            <Card sx={{ display: 'flex' }}>
-              {/* Image on the Left */}
-              <CardMedia
-                component="img"
-                sx={{ width: 150 }}  // Set a fixed width for the left image
-                image={news.image}
-                alt={news.title}
-              />
-
-              {/* Content on the Right */}
-              <Box sx={{ display: 'flex', flexDirection: 'column', flex: 1 }}>
-                <CardContent>
-                  <Typography variant="h5" component="div">
+        {/* News Cards */}
+        <Grid container spacing={4}>
+          {newsItems.map((news, index) => (
+            <Grid item xs={12} sm={6} md={4} key={index}>
+              <Card sx={{ maxWidth: 345, height: '100%', display: 'flex', flexDirection: 'column', background: '#1e1e1e', color: '#e0e0e0', boxShadow: '0 4px 8px rgba(0, 0, 0, 0.3)' }}> {/* Darker card background */}
+                
+                <CardMedia
+                  component="img"
+                  height="200"
+                  image={news.image}
+                  alt={news.title}
+                />
+                
+                <CardContent sx={{ flexGrow: 1 }}>
+                  <Typography variant="h5" component="div" sx={{ color: '#90a4ae' }}> {/* Cool-toned gray-blue for news title */}
                     {news.title}
                   </Typography>
-                  <Typography variant="body2" color="text.secondary">
+                  <Typography variant="body2" color="text.secondary" sx={{ color: '#9e9e9e' }}> {/* Muted gray for description */}
                     {news.description}
                   </Typography>
                 </CardContent>
+                
                 <CardActions>
-                  <Button size="small">Read More</Button>
+                  <Button size="small" sx={{ color: '#90caf9' }}>Read More</Button> {/* Soft blue accent for button */}
                 </CardActions>
-              </Box>
-            </Card>
-          </Grid>
-        ))}
-      </Grid>
-    </Container>
+              </Card>
+            </Grid>
+          ))}
+        </Grid>
+      </Container>
     </Box>
   );
 }
-// ------------------------
 
-// import React, { useState, useEffect } from 'react';
-// import { Box, Card, CardContent, Typography, Button, CircularProgress } from '@mui/material';
 
-// const News = () => {
-//   const [news, setNews] = useState([]);
-//   const [loading, setLoading] = useState(true);
-//   const [expandedArticle, setExpandedArticle] = useState(null);
-
-//   useEffect(() => {
-//     // Fetch news from the mock API (intercepted by MSW)
-//     fetch('/api/news')
-//       .then((response) => {
-//         // Log the full response object for debugging
-//         console.log('Response:', response);
-
-//         // Check if the response is OK (status code 200-299)
-//         if (!response.ok) {
-//           throw new Error('Network response was not ok: ' + response.statusText);
-//         }
-
-//         return response.json();
-//       })
-//       .then((data) => {
-//         console.log('Fetched news data:', data); // Log the fetched data
-//         setNews(data);
-//         setLoading(false);
-//       })
-//       .catch((error) => {
-//         console.error("Error fetching news:", error); // Log the error
-//         setLoading(false); // Stop loading state
-//       });
-//   }, []);
-
-//   if (loading) return <CircularProgress />;
-
-//   return (
-//     <Box sx={{ maxWidth: 600, margin: 'auto', mt: 4 }}>
-//       {news.map((article) => (
-//         <Card key={article.id} sx={{ mb: 3 }}>
-//           <CardContent>
-//             <Typography variant="h5">{article.title}</Typography>
-//             <Typography variant="subtitle2" color="text.secondary" gutterBottom>
-//               {article.date}
-//             </Typography>
-//             <Typography variant="body2" noWrap={!expandedArticle || expandedArticle !== article.id}>
-//               {article.content}
-//             </Typography>
-//             <Button
-//               variant="text"
-//               color="primary"
-//               onClick={() =>
-//                 setExpandedArticle(expandedArticle === article.id ? null : article.id)
-//               }
-//             >
-//               {expandedArticle === article.id ? 'Show Less' : 'Read More'}
-//             </Button>
-//           </CardContent>
-//         </Card>
-//       ))}
-//     </Box>
-//   );
-// };
-
-// export default News;
