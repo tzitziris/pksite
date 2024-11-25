@@ -341,6 +341,133 @@
 
 // export default Navbar;
 // -----------------------------------------------------------------
+// import * as React from 'react';
+// import PropTypes from 'prop-types';
+// import AppBar from '@mui/material/AppBar';
+// import Box from '@mui/material/Box';
+// import CssBaseline from '@mui/material/CssBaseline';
+// import Divider from '@mui/material/Divider';
+// import Drawer from '@mui/material/Drawer';
+// import IconButton from '@mui/material/IconButton';
+// import List from '@mui/material/List';
+// import ListItem from '@mui/material/ListItem';
+// import Toolbar from '@mui/material/Toolbar';
+// import Typography from '@mui/material/Typography';
+// import MenuIcon from '@mui/icons-material/Menu';
+// import Button from '@mui/material/Button';
+// import { Link } from 'react-router-dom';
+
+// const drawerWidth = 240;
+// const navItems = [
+//   { label: 'Home', path: '/home' },
+//   { label: 'News', path: '/news' },
+//   { label: 'About', path: '/about' },
+// ];
+
+// function Navbar(props) {
+//   const { window } = props;
+//   const [mobileOpen, setMobileOpen] = React.useState(false);
+
+//   const handleDrawerToggle = () => {
+//     setMobileOpen((prevState) => !prevState);
+//   };
+
+//   const drawer = (
+//     <Box onClick={handleDrawerToggle} sx={{ textAlign: 'center' }}>
+//       <Typography variant="h6" sx={{ my: 2 }}>
+//         MUI
+//       </Typography>
+//       <Divider />
+//       <List>
+//         {navItems.map((item) => (
+//           <ListItem key={item.label} disablePadding>
+//             <Link
+//               to={item.path}
+//               style={{
+//                 textDecoration: 'none',
+//                 color: '#000',
+//                 width: '100%',
+//                 display: 'block',
+//               }}
+//             >
+//               <Box sx={{ textAlign: 'center', padding: 2 }}>{item.label}</Box>
+//             </Link>
+//           </ListItem>
+//         ))}
+//       </List>
+//     </Box>
+//   );
+
+//   const container = window !== undefined ? () => window().document.body : undefined;
+
+//   return (
+//     <Box sx={{ display: 'flex' }}>
+//       <CssBaseline />
+//       <AppBar component="nav">
+//         <Toolbar sx={{ justifyContent: 'center' }}>
+//             <IconButton
+//               color="inherit"
+//               aria-label="open drawer"
+//               edge="start"
+//               onClick={handleDrawerToggle}
+//               sx={{ mr: 2, display: { sm: 'none' } }}
+//             >
+//               <MenuIcon />
+//             </IconButton>
+//             <Typography
+//               variant="h6"
+//               component="div"
+//               sx={{ display: { xs: 'none', sm: 'block' }, flexGrow: 1, textAlign: 'left' }}
+//             >
+//               Fight News
+//             </Typography>
+//             <Box sx={{ display: { xs: 'none', sm: 'block' }, justifyContent: 'center', flexGrow: 1 }}>
+//               {navItems.map((item) => (
+//                 <Link
+//                   key={item.label}
+//                   to={item.path}
+//                   style={{ textDecoration: 'none', color: '#fff' }}
+//                 >
+//                   <Button sx={{ color: '#fff' }}>{item.label}</Button>
+//                 </Link>
+//               ))}
+//             </Box>
+//         </Toolbar>
+//       </AppBar>
+//       <nav>
+//         <Drawer
+//           container={container}
+//           variant="temporary"
+//           open={mobileOpen}
+//           onClose={handleDrawerToggle}
+//           ModalProps={{
+//             keepMounted: true, // Better open performance on mobile.
+//           }}
+//           sx={{
+//             display: { xs: 'block', sm: 'none' },
+//             '& .MuiDrawer-paper': { boxSizing: 'border-box', width: drawerWidth },
+//           }}
+//         >
+//           {drawer}
+//         </Drawer>
+//       </nav>
+
+      
+//       {/* Main content area */}
+//       <Box component="main" /*sx={{ p: 1.7 }}*/>
+//         <Toolbar />
+//       </Box>
+//     </Box>
+//   );
+// }
+
+// Navbar.propTypes = {
+//   window: PropTypes.func,
+// };
+
+// export default Navbar;
+//-------------------------
+
 import * as React from 'react';
 import PropTypes from 'prop-types';
 import AppBar from '@mui/material/AppBar';
@@ -367,10 +494,29 @@ const navItems = [
 function Navbar(props) {
   const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
+  const [isVisible, setIsVisible] = React.useState(true); // Track visibility of navbar
+  const [lastScrollTop, setLastScrollTop] = React.useState(0);
 
   const handleDrawerToggle = () => {
     setMobileOpen((prevState) => !prevState);
   };
+
+  React.useEffect(() => {
+    if (typeof window === 'undefined') return; // Check if window is undefined (server-side rendering)
+    
+    const handleScroll = () => {
+      const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+      if (scrollTop > lastScrollTop) {
+        setIsVisible(false); // Hide navbar when scrolling down
+      } else {
+        setIsVisible(true); // Show navbar when scrolling up
+      }
+      setLastScrollTop(scrollTop <= 0 ? 0 : scrollTop); // Prevent negative scrolling
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [lastScrollTop, window]); // Depend on window and lastScrollTop
 
   const drawer = (
     <Box onClick={handleDrawerToggle} sx={{ textAlign: 'center' }}>
@@ -403,35 +549,43 @@ function Navbar(props) {
   return (
     <Box sx={{ display: 'flex' }}>
       <CssBaseline />
-      <AppBar component="nav">
+      <AppBar
+        component="nav"
+        sx={{
+          position: 'sticky',
+          top: 0,
+          transition: 'transform 0.3s ease',
+          transform: isVisible ? 'translateY(0)' : 'translateY(-100%)', // Hide navbar when scrolling down
+        }}
+      >
         <Toolbar sx={{ justifyContent: 'center' }}>
-            <IconButton
-              color="inherit"
-              aria-label="open drawer"
-              edge="start"
-              onClick={handleDrawerToggle}
-              sx={{ mr: 2, display: { sm: 'none' } }}
-            >
-              <MenuIcon />
-            </IconButton>
-            <Typography
-              variant="h6"
-              component="div"
-              sx={{ display: { xs: 'none', sm: 'block' }, flexGrow: 1, textAlign: 'left' }}
-            >
-              Fight News
-            </Typography>
-            <Box sx={{ display: { xs: 'none', sm: 'block' }, justifyContent: 'center', flexGrow: 1 }}>
-              {navItems.map((item) => (
-                <Link
-                  key={item.label}
-                  to={item.path}
-                  style={{ textDecoration: 'none', color: '#fff' }}
-                >
-                  <Button sx={{ color: '#fff' }}>{item.label}</Button>
-                </Link>
-              ))}
-            </Box>
+          <IconButton
+            color="inherit"
+            aria-label="open drawer"
+            edge="start"
+            onClick={handleDrawerToggle}
+            sx={{ mr: 2, display: { sm: 'none' } }}
+          >
+            <MenuIcon />
+          </IconButton>
+          <Typography
+            variant="h6"
+            component="div"
+            sx={{ display: { xs: 'none', sm: 'block' }, flexGrow: 1, textAlign: 'left' }}
+          >
+            Fight News
+          </Typography>
+          <Box sx={{ display: { xs: 'none', sm: 'block' }, justifyContent: 'center', flexGrow: 1 }}>
+            {navItems.map((item) => (
+              <Link
+                key={item.label}
+                to={item.path}
+                style={{ textDecoration: 'none', color: '#fff' }}
+              >
+                <Button sx={{ color: '#fff' }}>{item.label}</Button>
+              </Link>
+            ))}
+          </Box>
         </Toolbar>
       </AppBar>
       <nav>
@@ -451,12 +605,6 @@ function Navbar(props) {
           {drawer}
         </Drawer>
       </nav>
-
-      
-      {/* Main content area */}
-      <Box component="main" /*sx={{ p: 1.7 }}*/>
-        <Toolbar />
-      </Box>
     </Box>
   );
 }
